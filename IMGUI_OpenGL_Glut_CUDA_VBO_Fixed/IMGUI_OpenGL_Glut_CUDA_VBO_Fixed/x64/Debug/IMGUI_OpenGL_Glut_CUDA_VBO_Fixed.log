@@ -1,0 +1,10 @@
+﻿  stdafx.cpp
+  IMGUI_OpenGL_Glut_CUDA_VBO_Fixed.cpp
+d:\projects_lixiaoguang\projects\imgui_opengl_glut_cuda_vbo_fixed\imgui_opengl_glut_cuda_vbo_fixed\imgui_opengl_glut_cuda_vbo_fixed.cpp(140): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  imgui_impl_glut.cpp
+  imgui_draw.cpp
+  imgui_demo.cpp
+  imgui.cpp
+  Generating Code...
+  IMGUI_OpenGL_Glut_CUDA_VBO_Fixed.vcxproj -> D:\Projects_lixiaoguang\Projects\IMGUI_OpenGL_Glut_CUDA_VBO_Fixed\x64\Debug\IMGUI_OpenGL_Glut_CUDA_VBO_Fixed.exe
+  IMGUI_OpenGL_Glut_CUDA_VBO_Fixed.vcxproj -> D:\Projects_lixiaoguang\Projects\IMGUI_OpenGL_Glut_CUDA_VBO_Fixed\x64\Debug\IMGUI_OpenGL_Glut_CUDA_VBO_Fixed.pdb (Full PDB)
