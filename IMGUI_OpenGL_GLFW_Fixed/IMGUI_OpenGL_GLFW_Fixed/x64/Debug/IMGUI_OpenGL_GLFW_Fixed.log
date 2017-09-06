@@ -1,0 +1,13 @@
+﻿  stdafx.cpp
+  IMGUI_OpenGL_GLFW_Fixed.cpp
+  imgui_impl_glfw.cpp
+  imgui_draw.cpp
+  imgui_demo.cpp
+  imgui.cpp
+  Generating Code...
+glfw3.lib(init.obj) : warning LNK4217: locally defined symbol vsnprintf imported in function _glfwInputError
+MSVCRTD.lib(vsnprintf.obj) : warning LNK4049: locally defined symbol vsnprintf imported
+glfw3.lib(context.obj) : warning LNK4217: locally defined symbol sscanf imported in function parseVersionString
+MSVCRTD.lib(vsnprintf.obj) : warning LNK4049: locally defined symbol _vsnprintf imported
+  IMGUI_OpenGL_GLFW_Fixed.vcxproj -> D:\Projects_lixiaoguang\Projects\IMGUI_OpenGL_GLFW_Fixed\x64\Debug\IMGUI_OpenGL_GLFW_Fixed.exe
+  IMGUI_OpenGL_GLFW_Fixed.vcxproj -> D:\Projects_lixiaoguang\Projects\IMGUI_OpenGL_GLFW_Fixed\x64\Debug\IMGUI_OpenGL_GLFW_Fixed.pdb (Full PDB)

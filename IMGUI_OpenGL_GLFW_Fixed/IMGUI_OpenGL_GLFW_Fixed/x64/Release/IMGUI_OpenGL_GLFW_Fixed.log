@@ -1,0 +1,15 @@
+﻿  imgui.cpp
+  imgui_demo.cpp
+  imgui_draw.cpp
+  imgui_impl_glfw.cpp
+  IMGUI_OpenGL_GLFW_Fixed.cpp
+  stdafx.cpp
+  Generating code
+  Finished generating code
+  All 1094 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+glfw3.lib(context.obj) : warning LNK4049: locally defined symbol sscanf imported
+glfw3.lib(init.obj) : warning LNK4049: locally defined symbol vsnprintf imported
+MSVCRT.lib(vsnprintf.obj) : warning LNK4049: locally defined symbol vsnprintf imported
+MSVCRT.lib(vsnprintf.obj) : warning LNK4049: locally defined symbol _vsnprintf imported
+  IMGUI_OpenGL_GLFW_Fixed.vcxproj -> D:\Projects_lixiaoguang\Projects\IMGUI_OpenGL_GLFW_Fixed\x64\Release\IMGUI_OpenGL_GLFW_Fixed.exe
+  IMGUI_OpenGL_GLFW_Fixed.vcxproj -> D:\Projects_lixiaoguang\Projects\IMGUI_OpenGL_GLFW_Fixed\x64\Release\IMGUI_OpenGL_GLFW_Fixed.pdb (Full PDB)
