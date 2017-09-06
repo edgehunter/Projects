@@ -1,0 +1,16 @@
+﻿  stdafx.cpp
+  Status_CPU_Memory_Disk.cpp
+  Device_Status.cpp
+d:\projects_lixiaoguang\projects\status_cpu_memory_disk\status_cpu_memory_disk\device_status.cpp(26): warning C4293: '<<': shift count negative or too big, undefined behavior
+d:\projects_lixiaoguang\projects\status_cpu_memory_disk\status_cpu_memory_disk\device_status.cpp(27): warning C4293: '<<': shift count negative or too big, undefined behavior
+d:\projects_lixiaoguang\projects\status_cpu_memory_disk\status_cpu_memory_disk\device_status.cpp(35): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
+d:\projects_lixiaoguang\projects\status_cpu_memory_disk\status_cpu_memory_disk\device_status.cpp(36): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
+d:\projects_lixiaoguang\projects\status_cpu_memory_disk\status_cpu_memory_disk\device_status.cpp(37): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
+d:\projects_lixiaoguang\projects\status_cpu_memory_disk\status_cpu_memory_disk\device_status.cpp(82): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
+d:\projects_lixiaoguang\projects\status_cpu_memory_disk\status_cpu_memory_disk\device_status.cpp(124): warning C4244: '=': conversion from 'unsigned __int64' to 'unsigned int', possible loss of data
+d:\projects_lixiaoguang\projects\status_cpu_memory_disk\status_cpu_memory_disk\device_status.cpp(125): warning C4244: '=': conversion from 'unsigned __int64' to 'unsigned int', possible loss of data
+d:\projects_lixiaoguang\projects\status_cpu_memory_disk\status_cpu_memory_disk\device_status.cpp(126): warning C4244: '=': conversion from 'unsigned __int64' to 'unsigned int', possible loss of data
+  Generating Code...
+  Status_CPU_Memory_Disk.vcxproj -> D:\Projects_lixiaoguang\Projects\Status_CPU_Memory_Disk\x64\Debug\Status_CPU_Memory_Disk.exe
+  Status_CPU_Memory_Disk.vcxproj -> D:\Projects_lixiaoguang\Projects\Status_CPU_Memory_Disk\x64\Debug\Status_CPU_Memory_Disk.pdb (Full PDB)
