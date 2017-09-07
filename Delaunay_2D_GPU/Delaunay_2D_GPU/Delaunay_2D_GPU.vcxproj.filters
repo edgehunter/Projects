@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="gDel2D">
+      <UniqueIdentifier>{10b46d7d-b0b4-4b21-a8f0-8b1093de42ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="gDel2D\CPU">
+      <UniqueIdentifier>{83acf4dd-2783-4873-82ca-86c1b1770ec2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="gDel2D\GPU">
+      <UniqueIdentifier>{e452f75d-a3fe-426e-9876-d4c168341f15}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gDel2D\CPU\PredWrapper.h">
+      <Filter>gDel2D\CPU</Filter>
+    </ClInclude>
+    <ClInclude Include="gDel2D\GPU\CudaWrapper.h">
+      <Filter>gDel2D\GPU</Filter>
+    </ClInclude>
+    <ClInclude Include="gDel2D\GPU\DPredWrapper.h">
+      <Filter>gDel2D\GPU</Filter>
+    </ClInclude>
+    <ClInclude Include="gDel2D\GPU\HostToKernel.h">
+      <Filter>gDel2D\GPU</Filter>
+    </ClInclude>
+    <ClInclude Include="gDel2D\GPU\KerCommon.h">
+      <Filter>gDel2D\GPU</Filter>
+    </ClInclude>
+    <ClInclude Include="gDel2D\GPU\KerDivision.h">
+      <Filter>gDel2D\GPU</Filter>
+    </ClInclude>
+    <ClInclude Include="gDel2D\GPU\KerPredicates.h">
+      <Filter>gDel2D\GPU</Filter>
+    </ClInclude>
+    <ClInclude Include="gDel2D\GPU\KerPredWrapper.h">
+      <Filter>gDel2D\GPU</Filter>
+    </ClInclude>
+    <ClInclude Include="gDel2D\GPU\KerShewchuk.h">
+      <Filter>gDel2D\GPU</Filter>
+    </ClInclude>
+    <ClInclude Include="gDel2D\GPU\MemoryManager.h">
+      <Filter>gDel2D\GPU</Filter>
+    </ClInclude>
+    <ClInclude Include="gDel2D\GPU\SmallCounters.h">
+      <Filter>gDel2D\GPU</Filter>
+    </ClInclude>
+    <ClInclude Include="gDel2D\GPU\ThrustWrapper.h">
+      <Filter>gDel2D\GPU</Filter>
+    </ClInclude>
+    <ClInclude Include="gDel2D\CommonTypes.h">
+      <Filter>gDel2D</Filter>
+    </ClInclude>
+    <ClInclude Include="gDel2D\GpuDelaunay.h">
+      <Filter>gDel2D</Filter>
+    </ClInclude>
+    <ClInclude Include="gDel2D\PerfTimer.h">
+      <Filter>gDel2D</Filter>
+    </ClInclude>
+    <ClInclude Include="DelaunayChecker.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HashTable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="InputCreator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RandGen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Visualizer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gDel2D\CPU\predicates.cpp">
+      <Filter>gDel2D\CPU</Filter>
+    </ClCompile>
+    <ClCompile Include="gDel2D\CPU\PredWrapper.cpp">
+      <Filter>gDel2D\CPU</Filter>
+    </ClCompile>
+    <ClCompile Include="DelaunayChecker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HashTable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="InputCreator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RandGen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Visualizer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CudaCompile Include="gDel2D\GPU\GpuDelaunay.cu">
+      <Filter>gDel2D\GPU</Filter>
+    </CudaCompile>
+    <CudaCompile Include="gDel2D\GPU\KerDivision.cu">
+      <Filter>gDel2D\GPU</Filter>
+    </CudaCompile>
+    <CudaCompile Include="gDel2D\GPU\KerPredicates.cu">
+      <Filter>gDel2D\GPU</Filter>
+    </CudaCompile>
+    <CudaCompile Include="gDel2D\GPU\SmallCounters.cu">
+      <Filter>gDel2D\GPU</Filter>
+    </CudaCompile>
+    <CudaCompile Include="gDel2D\GPU\ThrustWrapper.cu">
+      <Filter>gDel2D\GPU</Filter>
+    </CudaCompile>
+  </ItemGroup>
+</Project>

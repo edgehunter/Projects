@@ -1,0 +1,3 @@
+GridWidth,8192,PointNum,1000,Runs,1,Input,Uniform,sort,reorder,--,TotalTime,0.0349867,InitTime,0.00949959,SplitTime,0.00535516,FlipTime,0.0144026,RelocateTime,0.000785282,SortTime,0.00367422,ConstraintTime,0,OutTime,0.00035881
+GridWidth,8192,PointNum,1000,Runs,1,Input,Uniform,sort,reorder,--,TotalTime,0.0315787,InitTime,0.00946132,SplitTime,0.00485419,FlipTime,0.0117673,RelocateTime,0.00102381,SortTime,0.0031917,ConstraintTime,0,OutTime,0.00037658
+GridWidth,8192,PointNum,16384,Runs,1,Input,Uniform,sort,reorder,--,TotalTime,0.0464697,InitTime,0.0114132,SplitTime,0.00714716,FlipTime,0.0174269,RelocateTime,0.00234764,SortTime,0.00617564,ConstraintTime,0,OutTime,0.000985874

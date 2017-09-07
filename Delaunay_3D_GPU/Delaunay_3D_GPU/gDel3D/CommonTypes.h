@@ -68,6 +68,9 @@ DAMAGE.
 #include <thrust/transform_scan.h>
 #include <thrust/unique.h>
 
+#include <thrust/iterator/constant_iterator.h>
+#include <thrust/extrema.h>
+
 #ifdef REAL_TYPE_FP32
 typedef float RealType;
 #else

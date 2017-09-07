@@ -101,12 +101,16 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;REAL_TYPE_FP32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>cublas.lib;cublas_device.lib;cuda.lib;cudadevrt.lib;cudart.lib;cudart_static.lib;cufft.lib;cufftw.lib;curand.lib;cusolver.lib;cusparse.lib;nppc.lib;nppi.lib;nppial.lib;nppicc.lib;nppicom.lib;nppidei.lib;nppif.lib;nppig.lib;nppim.lib;nppist.lib;nppisu.lib;nppitc.lib;npps.lib;nvblas.lib;nvcuvid.lib;nvgraph.lib;nvml.lib;nvrtc.lib;OpenCL.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <CudaCompile>
+      <CodeGeneration>%(CodeGeneration)</CodeGeneration>
+    </CudaCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -133,20 +137,42 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;REAL_TYPE_FP32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>cublas.lib;cublas_device.lib;cuda.lib;cudadevrt.lib;cudart.lib;cudart_static.lib;cufft.lib;cufftw.lib;curand.lib;cusolver.lib;cusparse.lib;nppc.lib;nppi.lib;nppial.lib;nppicc.lib;nppicom.lib;nppidei.lib;nppif.lib;nppig.lib;nppim.lib;nppist.lib;nppisu.lib;nppitc.lib;npps.lib;nvblas.lib;nvcuvid.lib;nvgraph.lib;nvml.lib;nvrtc.lib;OpenCL.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <CudaCompile>
+      <CodeGeneration>%(CodeGeneration)</CodeGeneration>
+    </CudaCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DelaunayChecker.h" />
+    <ClInclude Include="gDel3D\CommonTypes.h" />
+    <ClInclude Include="gDel3D\CPU\CPUDecl.h" />
+    <ClInclude Include="gDel3D\CPU\predicates.h" />
+    <ClInclude Include="gDel3D\CPU\PredWrapper.h" />
+    <ClInclude Include="gDel3D\CPU\Splaying.h" />
+    <ClInclude Include="gDel3D\CPU\Star.h" />
+    <ClInclude Include="gDel3D\GpuDelaunay.h" />
+    <ClInclude Include="gDel3D\GPU\CudaWrapper.h" />
+    <ClInclude Include="gDel3D\GPU\DPredWrapper.h" />
+    <ClInclude Include="gDel3D\GPU\GPUDecl.h" />
+    <ClInclude Include="gDel3D\GPU\HostToKernel.h" />
+    <ClInclude Include="gDel3D\GPU\KerCommon.h" />
+    <ClInclude Include="gDel3D\GPU\KerDivision.h" />
+    <ClInclude Include="gDel3D\GPU\KerPredicates.h" />
+    <ClInclude Include="gDel3D\GPU\KerPredWrapper.h" />
+    <ClInclude Include="gDel3D\GPU\KerShewchuk.h" />
+    <ClInclude Include="gDel3D\GPU\ThrustWrapper.h" />
+    <ClInclude Include="gDel3D\PerfTimer.h" />
     <ClInclude Include="InputCreator.h" />
     <ClInclude Include="RandGen.h" />
     <ClInclude Include="stdafx.h" />
@@ -155,9 +181,19 @@
   <ItemGroup>
     <ClCompile Include="DelaunayChecker.cpp" />
     <ClCompile Include="Demo.cpp" />
+    <ClCompile Include="gDel3D\CPU\predicates.cpp" />
+    <ClCompile Include="gDel3D\CPU\PredWrapper.cpp" />
+    <ClCompile Include="gDel3D\CPU\Splaying.cpp" />
+    <ClCompile Include="gDel3D\CPU\Star.cpp" />
     <ClCompile Include="InputCreator.cpp" />
     <ClCompile Include="RandGen.cpp" />
     <ClCompile Include="stdafx.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <CudaCompile Include="gDel3D\GpuDelaunay.cu" />
+    <CudaCompile Include="gDel3D\GPU\KerDivision.cu" />
+    <CudaCompile Include="gDel3D\GPU\KerPredicates.cu" />
+    <CudaCompile Include="gDel3D\GPU\ThrustWrapper.cu" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -48,7 +48,7 @@ DAMAGE.
 
 const int deviceIdx     = 0; 
 const int seed          = 123456789;
-const int pointNum      = 100000; 
+const int pointNum      = 128*128; 
 const Distribution dist = UniformDistribution;
 
 Point3HVec   pointVec; 
@@ -95,6 +95,8 @@ int main( int argc, const char* argv[] )
 
     // 4. Summary
     summarize( pointNum, output ); 
+
+	system("pause");
 
     return 0;
 }

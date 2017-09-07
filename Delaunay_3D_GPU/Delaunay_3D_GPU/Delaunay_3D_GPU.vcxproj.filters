@@ -13,6 +13,15 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="gDel3D">
+      <UniqueIdentifier>{e30cbe3b-4272-4118-9366-8006435d9573}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="gDel3D\CPU">
+      <UniqueIdentifier>{14286597-3d71-4795-92f1-f37ab6bcf1f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="gDel3D\GPU">
+      <UniqueIdentifier>{06b8b5ae-3db9-480a-b466-0e1dab6a37f1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -33,6 +42,60 @@
     <ClInclude Include="RandGen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="gDel3D\CommonTypes.h">
+      <Filter>gDel3D</Filter>
+    </ClInclude>
+    <ClInclude Include="gDel3D\GpuDelaunay.h">
+      <Filter>gDel3D</Filter>
+    </ClInclude>
+    <ClInclude Include="gDel3D\PerfTimer.h">
+      <Filter>gDel3D</Filter>
+    </ClInclude>
+    <ClInclude Include="gDel3D\CPU\CPUDecl.h">
+      <Filter>gDel3D\CPU</Filter>
+    </ClInclude>
+    <ClInclude Include="gDel3D\CPU\predicates.h">
+      <Filter>gDel3D\CPU</Filter>
+    </ClInclude>
+    <ClInclude Include="gDel3D\CPU\PredWrapper.h">
+      <Filter>gDel3D\CPU</Filter>
+    </ClInclude>
+    <ClInclude Include="gDel3D\CPU\Splaying.h">
+      <Filter>gDel3D\CPU</Filter>
+    </ClInclude>
+    <ClInclude Include="gDel3D\CPU\Star.h">
+      <Filter>gDel3D\CPU</Filter>
+    </ClInclude>
+    <ClInclude Include="gDel3D\GPU\CudaWrapper.h">
+      <Filter>gDel3D\GPU</Filter>
+    </ClInclude>
+    <ClInclude Include="gDel3D\GPU\DPredWrapper.h">
+      <Filter>gDel3D\GPU</Filter>
+    </ClInclude>
+    <ClInclude Include="gDel3D\GPU\GPUDecl.h">
+      <Filter>gDel3D\GPU</Filter>
+    </ClInclude>
+    <ClInclude Include="gDel3D\GPU\HostToKernel.h">
+      <Filter>gDel3D\GPU</Filter>
+    </ClInclude>
+    <ClInclude Include="gDel3D\GPU\KerCommon.h">
+      <Filter>gDel3D\GPU</Filter>
+    </ClInclude>
+    <ClInclude Include="gDel3D\GPU\KerDivision.h">
+      <Filter>gDel3D\GPU</Filter>
+    </ClInclude>
+    <ClInclude Include="gDel3D\GPU\KerPredicates.h">
+      <Filter>gDel3D\GPU</Filter>
+    </ClInclude>
+    <ClInclude Include="gDel3D\GPU\KerPredWrapper.h">
+      <Filter>gDel3D\GPU</Filter>
+    </ClInclude>
+    <ClInclude Include="gDel3D\GPU\KerShewchuk.h">
+      <Filter>gDel3D\GPU</Filter>
+    </ClInclude>
+    <ClInclude Include="gDel3D\GPU\ThrustWrapper.h">
+      <Filter>gDel3D\GPU</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -50,5 +113,31 @@
     <ClCompile Include="RandGen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="gDel3D\CPU\predicates.cpp">
+      <Filter>gDel3D\CPU</Filter>
+    </ClCompile>
+    <ClCompile Include="gDel3D\CPU\PredWrapper.cpp">
+      <Filter>gDel3D\CPU</Filter>
+    </ClCompile>
+    <ClCompile Include="gDel3D\CPU\Splaying.cpp">
+      <Filter>gDel3D\CPU</Filter>
+    </ClCompile>
+    <ClCompile Include="gDel3D\CPU\Star.cpp">
+      <Filter>gDel3D\CPU</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CudaCompile Include="gDel3D\GpuDelaunay.cu">
+      <Filter>gDel3D</Filter>
+    </CudaCompile>
+    <CudaCompile Include="gDel3D\GPU\KerDivision.cu">
+      <Filter>gDel3D\GPU</Filter>
+    </CudaCompile>
+    <CudaCompile Include="gDel3D\GPU\KerPredicates.cu">
+      <Filter>gDel3D\GPU</Filter>
+    </CudaCompile>
+    <CudaCompile Include="gDel3D\GPU\ThrustWrapper.cu">
+      <Filter>gDel3D\GPU</Filter>
+    </CudaCompile>
   </ItemGroup>
 </Project>
