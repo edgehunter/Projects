@@ -1,0 +1,43 @@
+﻿  stdafx.cpp
+  RandGen.cpp
+d:\projects_lixiaoguang\projects\delaunay_3d_gpu\delaunay_3d_gpu\randgen.cpp(97): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  d:\projects_lixiaoguang\projects\delaunay_3d_gpu\delaunay_3d_gpu\randgen.cpp(116): note: see reference to function template instantiation 'void RandGen::nextGaussian<float>(float &,float &,float &)' being compiled
+d:\projects_lixiaoguang\projects\delaunay_3d_gpu\delaunay_3d_gpu\randgen.cpp(98): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+d:\projects_lixiaoguang\projects\delaunay_3d_gpu\delaunay_3d_gpu\randgen.cpp(99): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+d:\projects_lixiaoguang\projects\delaunay_3d_gpu\delaunay_3d_gpu\randgen.cpp(103): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+d:\projects_lixiaoguang\projects\delaunay_3d_gpu\delaunay_3d_gpu\randgen.cpp(109): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+d:\projects_lixiaoguang\projects\delaunay_3d_gpu\delaunay_3d_gpu\randgen.cpp(110): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+d:\projects_lixiaoguang\projects\delaunay_3d_gpu\delaunay_3d_gpu\randgen.cpp(111): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  InputCreator.cpp
+c:\program files\nvidia gpu computing toolkit\cuda\v8.0\include\thrust\system\detail\error_category.inl(102): warning C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(178): note: see declaration of 'strerror'
+c:\program files\nvidia gpu computing toolkit\cuda\v8.0\include\thrust\system\cuda\detail\bulk\detail\pointer_traits.hpp(55): warning C4800: 'unsigned int': forcing value to bool 'true' or 'false' (performance warning)
+d:\projects_lixiaoguang\projects\delaunay_3d_gpu\delaunay_3d_gpu\inputcreator.cpp(246): warning C4244: 'initializing': conversion from 'std::streamoff' to 'int', possible loss of data
+d:\projects_lixiaoguang\projects\delaunay_3d_gpu\delaunay_3d_gpu\inputcreator.cpp(246): warning C4244: 'initializing': conversion from 'std::streamoff' to 'const int', possible loss of data
+d:\projects_lixiaoguang\projects\delaunay_3d_gpu\delaunay_3d_gpu\inputcreator.cpp(348): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+d:\projects_lixiaoguang\projects\delaunay_3d_gpu\delaunay_3d_gpu\inputcreator.cpp(348): warning C4267: 'initializing': conversion from 'size_t' to 'const int', possible loss of data
+d:\projects_lixiaoguang\projects\delaunay_3d_gpu\delaunay_3d_gpu\inputcreator.cpp(355): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  Demo.cpp
+c:\program files\nvidia gpu computing toolkit\cuda\v8.0\include\thrust\system\detail\error_category.inl(102): warning C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(178): note: see declaration of 'strerror'
+c:\program files\nvidia gpu computing toolkit\cuda\v8.0\include\thrust\system\cuda\detail\bulk\detail\pointer_traits.hpp(55): warning C4800: 'unsigned int': forcing value to bool 'true' or 'false' (performance warning)
+  DelaunayChecker.cpp
+c:\program files\nvidia gpu computing toolkit\cuda\v8.0\include\thrust\system\detail\error_category.inl(102): warning C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(178): note: see declaration of 'strerror'
+c:\program files\nvidia gpu computing toolkit\cuda\v8.0\include\thrust\system\cuda\detail\bulk\detail\pointer_traits.hpp(55): warning C4800: 'unsigned int': forcing value to bool 'true' or 'false' (performance warning)
+d:\projects_lixiaoguang\projects\delaunay_3d_gpu\delaunay_3d_gpu\delaunaychecker.cpp(106): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+d:\projects_lixiaoguang\projects\delaunay_3d_gpu\delaunay_3d_gpu\delaunaychecker.cpp(130): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+d:\projects_lixiaoguang\projects\delaunay_3d_gpu\delaunay_3d_gpu\delaunaychecker.cpp(154): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  Generating Code...
+DelaunayChecker.obj : error LNK2019: unresolved external symbol "public: void __cdecl PredWrapper::init(class thrust::host_vector<struct Point3,class std::allocator<struct Point3> > const &,struct Point3)" (?init@PredWrapper@@QEAAXAEBV?$host_vector@UPoint3@@V?$allocator@UPoint3@@@std@@@thrust@@UPoint3@@@Z) referenced in function "public: __cdecl DelaunayChecker::DelaunayChecker(class thrust::host_vector<struct Point3,class std::allocator<struct Point3> > *,struct GDelOutput *)" (??0DelaunayChecker@@QEAA@PEAV?$host_vector@UPoint3@@V?$allocator@UPoint3@@@std@@@thrust@@PEAUGDelOutput@@@Z)
+DelaunayChecker.obj : error LNK2019: unresolved external symbol "public: struct Point3 const & __cdecl PredWrapper::getPoint(int)const " (?getPoint@PredWrapper@@QEBAAEBUPoint3@@H@Z) referenced in function "public: bool __cdecl DelaunayChecker::checkDelaunay(bool)" (?checkDelaunay@DelaunayChecker@@QEAA_N_N@Z)
+DelaunayChecker.obj : error LNK2019: unresolved external symbol "public: int __cdecl PredWrapper::pointNum(void)const " (?pointNum@PredWrapper@@QEBAHXZ) referenced in function "public: bool __cdecl DelaunayChecker::checkDelaunay(bool)" (?checkDelaunay@DelaunayChecker@@QEAA_N_N@Z)
+DelaunayChecker.obj : error LNK2019: unresolved external symbol "public: enum Orient __cdecl PredWrapper::doOrient3DAdapt(int,int,int,int)const " (?doOrient3DAdapt@PredWrapper@@QEBA?AW4Orient@@HHHH@Z) referenced in function "public: void __cdecl DelaunayChecker::checkOrientation(void)" (?checkOrientation@DelaunayChecker@@QEAAXXZ)
+DelaunayChecker.obj : error LNK2019: unresolved external symbol "public: enum Side __cdecl PredWrapper::doInsphereAdapt(struct Tet,int)const " (?doInsphereAdapt@PredWrapper@@QEBA?AW4Side@@UTet@@H@Z) referenced in function "public: bool __cdecl DelaunayChecker::checkDelaunay(bool)" (?checkDelaunay@DelaunayChecker@@QEAA_N_N@Z)
+Demo.obj : error LNK2019: unresolved external symbol cudaDeviceReset referenced in function main
+Demo.obj : error LNK2019: unresolved external symbol cudaGetErrorString referenced in function "void __cdecl __cudaSafeCall(enum cudaError,char const *,int)" (?__cudaSafeCall@@YAXW4cudaError@@PEBDH@Z)
+Demo.obj : error LNK2019: unresolved external symbol cudaSetDevice referenced in function main
+Demo.obj : error LNK2019: unresolved external symbol "public: __cdecl GpuDel::GpuDel(void)" (??0GpuDel@@QEAA@XZ) referenced in function main
+Demo.obj : error LNK2019: unresolved external symbol "public: __cdecl GpuDel::~GpuDel(void)" (??1GpuDel@@QEAA@XZ) referenced in function main
+Demo.obj : error LNK2019: unresolved external symbol "public: void __cdecl GpuDel::compute(class thrust::host_vector<struct Point3,class std::allocator<struct Point3> > const &,struct GDelOutput *)" (?compute@GpuDel@@QEAAXAEBV?$host_vector@UPoint3@@V?$allocator@UPoint3@@@std@@@thrust@@PEAUGDelOutput@@@Z) referenced in function main
+D:\Projects_lixiaoguang\Projects\Delaunay_3D_GPU\x64\Debug\Delaunay_3D_GPU.exe : fatal error LNK1120: 11 unresolved externals
