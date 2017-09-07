@@ -44,9 +44,6 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="IMGUI_OpenGL_Glut_CUDA_VBO_Fixed.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="imgui_impl_glut.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -59,5 +56,10 @@
     <ClCompile Include="IMGUI\imgui_draw.cpp">
       <Filter>imgui</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CudaCompile Include="IMGUI_OpenGL_Glut_CUDA_VBO_Fixed.cu">
+      <Filter>Source Files</Filter>
+    </CudaCompile>
   </ItemGroup>
 </Project>
