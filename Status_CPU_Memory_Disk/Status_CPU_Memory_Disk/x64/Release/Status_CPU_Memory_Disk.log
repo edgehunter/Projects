@@ -12,7 +12,7 @@ Device_Status.cpp(126): warning C4244: '=': conversion from 'unsigned __int64' t
   Status_CPU_Memory_Disk.cpp
   stdafx.cpp
   Generating code
-  All 15 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  All 17 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   Finished generating code
   Status_CPU_Memory_Disk.vcxproj -> D:\Projects_lixiaoguang\Projects\Status_CPU_Memory_Disk\x64\Release\Status_CPU_Memory_Disk.exe
   Status_CPU_Memory_Disk.vcxproj -> D:\Projects_lixiaoguang\Projects\Status_CPU_Memory_Disk\x64\Release\Status_CPU_Memory_Disk.pdb (Full PDB)

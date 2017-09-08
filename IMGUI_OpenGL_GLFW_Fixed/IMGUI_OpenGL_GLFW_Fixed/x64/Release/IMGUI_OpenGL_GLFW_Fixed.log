@@ -22,6 +22,7 @@ c:\program files\nvidia gpu computing toolkit\cuda\v8.0\include\device_double_fu
 c:\program files\nvidia gpu computing toolkit\cuda\v8.0\include\sm_20_intrinsics.h : warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
 c:\program files\nvidia gpu computing toolkit\cuda\v8.0\include\sm_20_intrinsics.h(943): warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\tchar.h(643): warning : expression has no effect
+D:/Projects_lixiaoguang/Projects/IMGUI_OpenGL_GLFW_Fixed/IMGUI_OpenGL_GLFW_Fixed/IMGUI_OpenGL_GLFW_Fixed.cu(405): warning : variable "f" was declared but never referenced
 c:\program files\nvidia gpu computing toolkit\cuda\v8.0\include\math_functions.h : warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
 c:\program files\nvidia gpu computing toolkit\cuda\v8.0\include\math_functions.h(849): warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
 c:\program files\nvidia gpu computing toolkit\cuda\v8.0\include\math_functions.h(1787): warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
@@ -39,6 +40,7 @@ c:\program files\nvidia gpu computing toolkit\cuda\v8.0\include\device_double_fu
 c:\program files\nvidia gpu computing toolkit\cuda\v8.0\include\sm_20_intrinsics.h : warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
 c:\program files\nvidia gpu computing toolkit\cuda\v8.0\include\sm_20_intrinsics.h(943): warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\tchar.h(643): warning : expression has no effect
+D:/Projects_lixiaoguang/Projects/IMGUI_OpenGL_GLFW_Fixed/IMGUI_OpenGL_GLFW_Fixed/IMGUI_OpenGL_GLFW_Fixed.cu(405): warning : variable "f" was declared but never referenced
 c:\program files\nvidia gpu computing toolkit\cuda\v8.0\include\math_functions.h : warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
 c:\program files\nvidia gpu computing toolkit\cuda\v8.0\include\math_functions.h(849): warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
 c:\program files\nvidia gpu computing toolkit\cuda\v8.0\include\math_functions.h(1787): warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
@@ -106,13 +108,24 @@ c:\program files\nvidia gpu computing toolkit\cuda\v8.0\include\math_functions.h
 c:\program files\nvidia gpu computing toolkit\cuda\v8.0\include\math_functions.h(7956): warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
 CUDACOMPILE : nvcc warning : The 'compute_20', 'sm_20', and 'sm_21' architectures are deprecated, and may be removed in a future release (Use -Wno-deprecated-gpu-targets to suppress warning).
   IMGUI_OpenGL_GLFW_Fixed.cu
+  Device_Status.cpp
+Device_Status\Device_Status.cpp(26): warning C4293: '<<': shift count negative or too big, undefined behavior
+Device_Status\Device_Status.cpp(27): warning C4293: '<<': shift count negative or too big, undefined behavior
+Device_Status\Device_Status.cpp(35): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
+Device_Status\Device_Status.cpp(36): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
+Device_Status\Device_Status.cpp(37): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
+Device_Status\Device_Status.cpp(82): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
+Device_Status\Device_Status.cpp(124): warning C4244: '=': conversion from 'unsigned __int64' to 'unsigned int', possible loss of data
+Device_Status\Device_Status.cpp(125): warning C4244: '=': conversion from 'unsigned __int64' to 'unsigned int', possible loss of data
+Device_Status\Device_Status.cpp(126): warning C4244: '=': conversion from 'unsigned __int64' to 'unsigned int', possible loss of data
   imgui.cpp
   imgui_demo.cpp
   imgui_draw.cpp
   imgui_impl_glfw.cpp
   stdafx.cpp
   Generating code
-  All 1092 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  All 1104 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   Finished generating code
 glfw3.lib(init.obj) : warning LNK4049: locally defined symbol vsnprintf imported
 MSVCRT.lib(vsnprintf.obj) : warning LNK4049: locally defined symbol vsnprintf imported

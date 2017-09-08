@@ -3,6 +3,10 @@
 
 #include "stdafx.h"
 
+//Device_Status
+////////////////////////////////////////////////////////////////////////////////
+#include "Device_Status\Device_Status.h"
+
 //CUDA_VBO
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -322,6 +326,36 @@ static void error_callback(int error, const char* description)
 	fprintf(stderr, "Error %d: %s\n", error, description);
 }
 
+//UTF-8到GB2312的转换
+char* U2G(const char* utf8)
+{
+	int len = MultiByteToWideChar(CP_UTF8, 0, utf8, -1, NULL, 0);
+	wchar_t* wstr = new wchar_t[len + 1];
+	memset(wstr, 0, len + 1);
+	MultiByteToWideChar(CP_UTF8, 0, utf8, -1, wstr, len);
+	len = WideCharToMultiByte(CP_ACP, 0, wstr, -1, NULL, 0, NULL, NULL);
+	char* str = new char[len + 1];
+	memset(str, 0, len + 1);
+	WideCharToMultiByte(CP_ACP, 0, wstr, -1, str, len, NULL, NULL);
+	if (wstr) delete[] wstr;
+	return str;
+}
+
+//GB2312到UTF-8的转换
+char* G2U(const char* gb2312)
+{
+	int len = MultiByteToWideChar(CP_ACP, 0, gb2312, -1, NULL, 0);
+	wchar_t* wstr = new wchar_t[len + 1];
+	memset(wstr, 0, len + 1);
+	MultiByteToWideChar(CP_ACP, 0, gb2312, -1, wstr, len);
+	len = WideCharToMultiByte(CP_UTF8, 0, wstr, -1, NULL, 0, NULL, NULL);
+	char* str = new char[len + 1];
+	memset(str, 0, len + 1);
+	WideCharToMultiByte(CP_UTF8, 0, wstr, -1, str, len, NULL, NULL);
+	if (wstr) delete[] wstr;
+	return str;
+}
+
 int main(int, char**)
 {
 	// Setup window
@@ -331,6 +365,10 @@ int main(int, char**)
 	GLFWwindow* window = glfwCreateWindow(1280, 720, "ImGui OpenGL2 example", NULL, NULL);
 	glfwMakeContextCurrent(window);
 	glfwSwapInterval(1); // Enable vsync
+
+	//Device_Status
+	Disk_Struct* m_Disk_Struct;
+	CDevice_Status* m_CDevice_Status = new CDevice_Status();
 
 	// Init CUDA VBO
 	if (init_CUDA_VBO())
@@ -343,9 +381,9 @@ int main(int, char**)
 
 	// Load Fonts
 	// (there is a default font, this is only if you want to change it. see extra_fonts/README.txt for more details)
-	//ImGuiIO& io = ImGui::GetIO();
+	ImGuiIO& io = ImGui::GetIO();
 	//io.Fonts->AddFontDefault();
-	//io.Fonts->AddFontFromFileTTF("../../extra_fonts/Cousine-Regular.ttf", 15.0f);
+	io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\simkai.ttf", 15.0f, NULL, io.Fonts->GetGlyphRangesChinese());
 	//io.Fonts->AddFontFromFileTTF("../../extra_fonts/DroidSans.ttf", 16.0f);
 	//io.Fonts->AddFontFromFileTTF("../../extra_fonts/ProggyClean.ttf", 13.0f);
 	//io.Fonts->AddFontFromFileTTF("../../extra_fonts/ProggyTiny.ttf", 10.0f);
@@ -365,12 +403,28 @@ int main(int, char**)
 		// Tip: if we don't call ImGui::Begin()/ImGui::End() the widgets appears in a window automatically called "Debug"
 		{
 			static float f = 0.0f;
-			ImGui::Text("Hello, world!");
-			ImGui::SliderFloat("float", &f, 0.0f, 1.0f);
+			ImGui::Text("Welcome Sensor 3D");
+			//ImGui::SliderFloat("float", &f, 0.0f, 1.0f);
 			ImGui::ColorEdit3("clear color", (float*)&clear_color);
 			if (ImGui::Button("Test Window")) show_test_window ^= 1;
 			if (ImGui::Button("Another Window")) show_another_window ^= 1;
 			ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+
+			//Device_Status
+			
+			ImGui::Text(G2U("使用率:"));
+			ImGui::Text("CPU Usage 使用率: %d%%\n", m_CDevice_Status->Get_Cpu_Usage());
+			ImGui::Text("Memory Usage: %d%%\n", m_CDevice_Status->Get_Memory_Usage());
+
+			//Device_Status
+			int Disk_Count;
+			m_Disk_Struct = m_CDevice_Status->Get_Disks_Usage(&Disk_Count);
+
+			for (size_t j = 0; j < Disk_Count; j++)
+			{
+				ImGui::Text("Disk ID: %s, Total Volume: %d, Total Available: %d, Total Free: %d, Disk Usage: %f%%\n", m_Disk_Struct[j].Disk_Name, m_Disk_Struct[j].total_memory, m_Disk_Struct[j].available_memory, m_Disk_Struct[j].free_memory, m_Disk_Struct[j].Usage_Percent);
+			}
+
 		}
 
 		// 2. Show another simple window, this time using an explicit Begin/End pair

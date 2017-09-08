@@ -128,6 +128,8 @@ int main()
 		Sleep(500);
 	}
 
+	delete m_CDevice_Status;
+
 	system("pause");
 
 }
