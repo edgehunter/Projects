@@ -1,3 +1,7 @@
 GridWidth,8192,PointNum,1000,Runs,1,Input,Uniform,sort,reorder,--,TotalTime,0.0349867,InitTime,0.00949959,SplitTime,0.00535516,FlipTime,0.0144026,RelocateTime,0.000785282,SortTime,0.00367422,ConstraintTime,0,OutTime,0.00035881
 GridWidth,8192,PointNum,1000,Runs,1,Input,Uniform,sort,reorder,--,TotalTime,0.0315787,InitTime,0.00946132,SplitTime,0.00485419,FlipTime,0.0117673,RelocateTime,0.00102381,SortTime,0.0031917,ConstraintTime,0,OutTime,0.00037658
 GridWidth,8192,PointNum,16384,Runs,1,Input,Uniform,sort,reorder,--,TotalTime,0.0464697,InitTime,0.0114132,SplitTime,0.00714716,FlipTime,0.0174269,RelocateTime,0.00234764,SortTime,0.00617564,ConstraintTime,0,OutTime,0.000985874
+GridWidth,8192,PointNum,16384,Runs,1,Input,Uniform,sort,reorder,--,TotalTime,0.223447,InitTime,0.185137,SplitTime,0.00784086,FlipTime,0.0185163,RelocateTime,0.00245836,SortTime,0.00662706,ConstraintTime,0,OutTime,0.00193108
+GridWidth,8192,PointNum,16384,Runs,1,Input,Uniform,--,--,InsAll,TotalTime,0.0417464,InitTime,0.0102005,SplitTime,0.00786615,FlipTime,0.019779,RelocateTime,0.00232099,SortTime,0,ConstraintTime,0,OutTime,0.00076512
+GridWidth,8192,PointNum,16384,Runs,1,Input,Uniform,--,--,--,TotalTime,0.0465975,InitTime,0.0121001,SplitTime,0.00853969,FlipTime,0.0203476,RelocateTime,0.00365269,SortTime,0,ConstraintTime,0,OutTime,0.00106652
+GridWidth,8192,PointNum,16384,Runs,1,Input,Uniform,--,--,InsAll,TotalTime,0.042137,InitTime,0.00947601,SplitTime,0.00906116,FlipTime,0.0195343,RelocateTime,0.00242385,SortTime,0,ConstraintTime,0,OutTime,0.00076307

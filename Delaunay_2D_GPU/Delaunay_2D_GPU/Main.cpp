@@ -306,6 +306,11 @@ int main( int argc, char* argv[] )
 
     parseCommandline( argc, argv, app ); 
 
+	app._input.insAll = true;
+	app._input.noSort = true;
+	app._input.noReorder = true;
+
+
 #ifdef WINDOWS_VISUALIZATION
     // Visualization
     Visualizer *vis = Visualizer::instance(); 
