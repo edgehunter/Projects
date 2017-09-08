@@ -44,9 +44,6 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="IMGUI_OpenGL_GLFW_Fixed.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="IMGUI\imgui.cpp">
       <Filter>imgui</Filter>
     </ClCompile>
@@ -59,5 +56,10 @@
     <ClCompile Include="imgui_impl_glfw.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CudaCompile Include="IMGUI_OpenGL_GLFW_Fixed.cu">
+      <Filter>Source Files</Filter>
+    </CudaCompile>
   </ItemGroup>
 </Project>
