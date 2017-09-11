@@ -30,6 +30,8 @@ public:
 	int Get_Cpu_Usage();
 	int Get_Memory_Usage();
 	Disk_Struct* Get_Disks_Usage(int* Disk_Count);
+	void Get_SystemTime(char* Char_SystemTime);
+	int Get_CharLength();
 
 private:
 
@@ -44,6 +46,7 @@ private:
 	FILETIME userTime;
 
 	int cpu_usage;
+	int compute_Frequency;
 
 	//Memory使用率
 	////////////////////////////////////////////////////////////
@@ -57,6 +60,13 @@ private:
 	int disk_count;
 	unsigned long long available, total, free;
 
+	//时间信息
+	////////////////////////////////////////////////////////////
+	SYSTEMTIME m_SystemTime;
+	int m_CharLength;
+	char* m_Char_SystemTime;
+
+
 private:
 
 	//CPU利用率
@@ -67,14 +77,16 @@ private:
 
 	//Memory使用率
 	////////////////////////////////////////////////////////////
-
 	void  Compute_MemoryUseage();
 
 	//Disk使用率
 	////////////////////////////////////////////////////////////
-
 	void CDevice_Status::putDisksType(const char* lpRootPathName);
 	void CDevice_Status::putDisksFreeSpace(const char* lpRootPathName);
 	void CDevice_Status::Compute_Disks_Usage();
+
+	//时间信息
+	////////////////////////////////////////////////////////////
+	void  Compute_SystemTime();
 
 };

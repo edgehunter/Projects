@@ -4,18 +4,24 @@ CDevice_Status::CDevice_Status()
 {
 	GetSystemTimes(&m_preidleTime, &m_prekernelTime, &m_preuserTime);
 	cpu_usage = 0;
+	compute_Frequency = 0;
 
 	statex.dwLength = sizeof(statex);
 	memory_usage = 0;
 
 	m_Disk_Struct = new Disk_Struct[DRIVE_MAX];
 	disk_count = 0;
+
+	GetLocalTime(&m_SystemTime);
+	m_CharLength = 256;
+	m_Char_SystemTime = new char[m_CharLength];
 }
 
 
 CDevice_Status::~CDevice_Status()
 {
 	delete m_Disk_Struct;
+	delete m_Char_SystemTime;
 }
 
 //
@@ -53,7 +59,12 @@ void CDevice_Status::Compute_CpuUseage()
 
 int CDevice_Status::Get_Cpu_Usage()
 {
-	Compute_CpuUseage();
+	if (++compute_Frequency % 100 == 0)
+	{
+		Compute_CpuUseage();
+		compute_Frequency = 0;
+	}
+	
 	return cpu_usage;
 }
 
@@ -118,13 +129,13 @@ void CDevice_Status::putDisksFreeSpace(const char* lpRootPathName)
 
 	if (GetDiskFreeSpaceExA(lpRootPathName, (ULARGE_INTEGER*)&available, (ULARGE_INTEGER*)&total, (ULARGE_INTEGER*)&free))
 	{
-		//printf("Drives %s | total = %lld MB,available = %lld MB,free = %lld MB\n",
-		//	lpRootPathName, total >> 20, available >> 20, free >> 20);
+		//printf("Drives %s | total = %lld GB,available = %lld GB,free = %lld GB\n",
+		//	lpRootPathName, total >> 30, available >> 30, free >> 30);
 
-		m_Disk_Struct[disk_count].total_memory = total >> 20;
-		m_Disk_Struct[disk_count].available_memory = available >> 20;
-		m_Disk_Struct[disk_count].free_memory = free >> 20;
-		m_Disk_Struct[disk_count].Usage_Percent = 100 * (1 - (float)m_Disk_Struct[disk_count].available_memory / (float)m_Disk_Struct[disk_count].total_memory);
+		m_Disk_Struct[disk_count].total_memory = total >> 30;
+		m_Disk_Struct[disk_count].available_memory = available >> 30;
+		m_Disk_Struct[disk_count].free_memory = free >> 30;
+		m_Disk_Struct[disk_count].Usage_Percent = (1 - (float)m_Disk_Struct[disk_count].available_memory / (float)m_Disk_Struct[disk_count].total_memory);
 	}
 	else
 	{
@@ -166,4 +177,30 @@ Disk_Struct* CDevice_Status::Get_Disks_Usage(int* Disk_Count)
 	memcpy(Disk_Count, &disk_count, sizeof(int));
 
 	return m_Disk_Struct;
+}
+
+//时间信息
+////////////////////////////////////////////////////////////
+void CDevice_Status::Compute_SystemTime()
+{
+	GetLocalTime(&m_SystemTime);
+	sprintf_s(m_Char_SystemTime, m_CharLength, "System Time: %d-%02d-%02d %02d:%02d:%02d\n",
+		m_SystemTime.wYear,
+		m_SystemTime.wMonth,
+		m_SystemTime.wDay,
+		m_SystemTime.wHour,
+		m_SystemTime.wMinute,
+		m_SystemTime.wSecond);
+	
+}
+
+void CDevice_Status::Get_SystemTime(char* Char_SystemTime)
+{
+	Compute_SystemTime();
+	memcpy(Char_SystemTime, m_Char_SystemTime, m_CharLength);
+}
+
+int CDevice_Status::Get_CharLength()
+{
+	return m_CharLength;
 }

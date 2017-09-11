@@ -47,6 +47,9 @@
 #include <stdio.h>
 #include <GLFW/glfw3.h>
 
+#include <math.h>           // sqrtf, powf, cosf, sinf, floorf, ceilf
+#define IM_ARRAYSIZE(_ARR)  ((int)(sizeof(_ARR)/sizeof(*_ARR)))
+
 
 
 //CUDA_VBO
@@ -321,6 +324,19 @@ void Render_CUDA_VBO()
 //IMGUI glfw
 ////////////////////////////////////////////////////////////////////////////////
 
+static void ShowHelpMarker(const char* desc)
+{
+	ImGui::TextDisabled("(?)");
+	if (ImGui::IsItemHovered())
+	{
+		ImGui::BeginTooltip();
+		ImGui::PushTextWrapPos(450.0f);
+		ImGui::TextUnformatted(desc);
+		ImGui::PopTextWrapPos();
+		ImGui::EndTooltip();
+	}
+}
+
 static void error_callback(int error, const char* description)
 {
 	fprintf(stderr, "Error %d: %s\n", error, description);
@@ -342,7 +358,7 @@ char* U2G(const char* utf8)
 }
 
 //GB2312到UTF-8的转换
-char* G2U(const char* gb2312)
+char* G2U(char* gb2312)
 {
 	int len = MultiByteToWideChar(CP_ACP, 0, gb2312, -1, NULL, 0);
 	wchar_t* wstr = new wchar_t[len + 1];
@@ -352,8 +368,12 @@ char* G2U(const char* gb2312)
 	char* str = new char[len + 1];
 	memset(str, 0, len + 1);
 	WideCharToMultiByte(CP_UTF8, 0, wstr, -1, str, len, NULL, NULL);
+	memcpy(gb2312, str, len + 1);
+
 	if (wstr) delete[] wstr;
-	return str;
+	if (str) delete[] str;
+
+	return gb2312;
 }
 
 int main(int, char**)
@@ -391,6 +411,9 @@ int main(int, char**)
 
 	bool show_test_window = true;
 	bool show_another_window = false;
+	bool show_overlay_window = true;
+	bool show_plots_window = true;
+	bool show_software_window = true;
 	ImVec4 clear_color = ImColor(114, 144, 154);
 
 	// Main loop
@@ -398,6 +421,8 @@ int main(int, char**)
 	{
 		glfwPollEvents();
 		ImGui_ImplGlfwGL2_NewFrame();
+
+		/*
 
 		// 1. Show a simple window
 		// Tip: if we don't call ImGui::Begin()/ImGui::End() the widgets appears in a window automatically called "Debug"
@@ -409,21 +434,6 @@ int main(int, char**)
 			if (ImGui::Button("Test Window")) show_test_window ^= 1;
 			if (ImGui::Button("Another Window")) show_another_window ^= 1;
 			ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
-
-			//Device_Status
-			
-			ImGui::Text(G2U("使用率:"));
-			ImGui::Text("CPU Usage 使用率: %d%%\n", m_CDevice_Status->Get_Cpu_Usage());
-			ImGui::Text("Memory Usage: %d%%\n", m_CDevice_Status->Get_Memory_Usage());
-
-			//Device_Status
-			int Disk_Count;
-			m_Disk_Struct = m_CDevice_Status->Get_Disks_Usage(&Disk_Count);
-
-			for (size_t j = 0; j < Disk_Count; j++)
-			{
-				ImGui::Text("Disk ID: %s, Total Volume: %d, Total Available: %d, Total Free: %d, Disk Usage: %f%%\n", m_Disk_Struct[j].Disk_Name, m_Disk_Struct[j].total_memory, m_Disk_Struct[j].available_memory, m_Disk_Struct[j].free_memory, m_Disk_Struct[j].Usage_Percent);
-			}
 
 		}
 
@@ -441,6 +451,331 @@ int main(int, char**)
 			ImGui::SetNextWindowPos(ImVec2(650, 20), ImGuiCond_FirstUseEver);
 			ImGui::ShowTestWindow(&show_test_window);
 		}
+
+		*/
+
+		//4. lixiaoguang
+		{
+			//main frame
+			{
+				ImGui::Text("Welcome Sensor 3D");
+				ImGui::ColorEdit3("clear color", (float*)&clear_color);
+				if (ImGui::Button("show_overlay_window")) show_overlay_window ^= 1;
+				if (ImGui::Button("show_software_window")) show_software_window ^= 1;
+				//ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+			}
+
+			//overlay fixed
+			if (show_overlay_window)
+			{
+				ImGui::SetNextWindowPos(ImVec2(10, 10));
+				ImGui::PushStyleColor(ImGuiCol_WindowBg, ImVec4(0.0f, 0.0f, 0.0f, 0.3f));
+				if (!ImGui::Begin("Welcome Sensor 3D", &show_overlay_window, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoSavedSettings))
+				{
+					ImGui::End();
+				}
+				else
+				{
+					char* m_SystemTime = new char[m_CDevice_Status->Get_CharLength()];
+					m_CDevice_Status->Get_SystemTime(m_SystemTime);
+					ImGui::Text("%s\n", m_SystemTime);
+
+					ImGui::Separator();
+					ImGui::Text("FPS: %.1f", ImGui::GetIO().Framerate);
+					ImGui::Text("Mouse Position: (%.1f,%.1f)", ImGui::GetIO().MousePos.x, ImGui::GetIO().MousePos.y);
+					ImGui::End();
+
+				}
+
+				ImGui::PopStyleColor();
+			}
+
+			if (show_software_window)
+			{
+				ImGui::Begin("Software Window", &show_software_window, ImGuiWindowFlags_AlwaysAutoResize);
+				ImGui::Text("Hello from Plots window!");
+
+				///////////////////////////////////////////////////////////////////////
+
+				//Device_Status
+				char buf[256];
+				sprintf_s(buf, 256, "CPU 使用率: %d\n", m_CDevice_Status->Get_Cpu_Usage());
+				ImGui::Text(G2U(buf));
+
+				//if (ImGui::TreeNode("CPU Usage"))
+				{
+					// Create a dummy array of contiguous float values to plot
+					// Tip: If your float aren't contiguous but part of a structure, you can pass a pointer to your first float and the sizeof() of your structure in the Stride parameter.
+					static float values_CPU[256] = { 0 };
+					static int values_offset_CPU = 0;
+
+					values_CPU[values_offset_CPU] = m_CDevice_Status->Get_Cpu_Usage();
+					values_offset_CPU = (values_offset_CPU + 1) % IM_ARRAYSIZE(values_CPU);
+					ImGui::PlotLines("", values_CPU, IM_ARRAYSIZE(values_CPU), values_offset_CPU, NULL, 0.0f, 100.0f, ImVec2(0, 80));
+				}
+				
+				ImGui::Separator();
+				///////////////////////////////////////////////////////////////////////
+
+				sprintf_s(buf, 256, "Memory 使用率: %d\n", m_CDevice_Status->Get_Memory_Usage());
+				ImGui::Text(G2U(buf));
+
+				//if (ImGui::TreeNode("Memory Usage"))
+				{
+					// Create a dummy array of contiguous float values to plot
+					// Tip: If your float aren't contiguous but part of a structure, you can pass a pointer to your first float and the sizeof() of your structure in the Stride parameter.
+					static float values_Memory[256] = { 0 };
+					static int values_offset_Memory = 0;
+
+					values_Memory[values_offset_Memory] = m_CDevice_Status->Get_Memory_Usage();
+					values_offset_Memory = (values_offset_Memory + 1) % IM_ARRAYSIZE(values_Memory);
+					ImGui::PlotHistogram("", values_Memory, IM_ARRAYSIZE(values_Memory), values_offset_Memory, NULL, 0.0f, 100.0f, ImVec2(0, 80));
+				}
+
+				ImGui::Separator();
+				///////////////////////////////////////////////////////////////////////
+
+
+				//Device_Status
+				int Disk_Count;
+				m_Disk_Struct = m_CDevice_Status->Get_Disks_Usage(&Disk_Count);
+
+				// Typically we would use ImVec2(-1.0f,0.0f) to use all available width, or ImVec2(width,0.0f) for a specified width. ImVec2(0.0f,0.0f) uses ItemWidth.
+
+				for (size_t j = 0; j < Disk_Count; j++)
+				{
+					sprintf_s(buf, 256, "分区 %s 使用率:\n", m_Disk_Struct[j].Disk_Name);
+					ImGui::Text(G2U(buf));
+					ImGui::SameLine();
+					ImGui::ProgressBar(m_Disk_Struct[j].Usage_Percent, ImVec2(0.0f, 0.0f));
+				}
+
+
+				sprintf_s(buf, 256, "分区详细信息");
+				if (ImGui::TreeNode(G2U(buf)))
+				{
+
+					for (size_t j = 0; j < Disk_Count; j++)
+					{
+						sprintf_s(buf, 256, "分区 ID: %s, 总量: %3d GB, 可用空间: %3d GB, 使用率: %.2f\n", m_Disk_Struct[j].Disk_Name, m_Disk_Struct[j].total_memory, m_Disk_Struct[j].available_memory, m_Disk_Struct[j].Usage_Percent * 100);
+						ImGui::Text(G2U(buf));
+					}
+				}
+
+
+				ImGui::Separator();
+				///////////////////////////////////////////////////////////////////////
+				
+				ImGui::End();
+			}
+			
+			///////////////////////////////////////////////////////////////////////
+			
+			//plots window
+			if (show_plots_window)
+			{
+				ImGui::Begin("Plots Window", &show_plots_window, ImGuiWindowFlags_AlwaysAutoResize);
+				ImGui::Text("Hello from Plots window!");
+
+
+				if (ImGui::TreeNode("Plots widgets"))
+				{
+					static bool animate = true;
+					ImGui::Checkbox("Animate", &animate);
+
+					static float arr[] = { 0.6f, 0.1f, 1.0f, 0.5f, 0.92f, 0.1f, 0.2f };
+					ImGui::PlotLines("Frame Times", arr, IM_ARRAYSIZE(arr));
+
+					// Create a dummy array of contiguous float values to plot
+					// Tip: If your float aren't contiguous but part of a structure, you can pass a pointer to your first float and the sizeof() of your structure in the Stride parameter.
+					static float values[90] = { 0 };
+					static int values_offset = 0;
+					static float refresh_time = 0.0f;
+					if (!animate || refresh_time == 0.0f)
+						refresh_time = ImGui::GetTime();
+					while (refresh_time < ImGui::GetTime()) // Create dummy data at fixed 60 hz rate for the demo
+					{
+						static float phase = 0.0f;
+						values[values_offset] = cosf(phase);
+						values_offset = (values_offset + 1) % IM_ARRAYSIZE(values);
+						phase += 0.10f*values_offset;
+						refresh_time += 1.0f / 60.0f;
+					}
+					ImGui::PlotLines("Lines", values, IM_ARRAYSIZE(values), values_offset, "avg 0.0", -1.0f, 1.0f, ImVec2(0, 80));
+					ImGui::PlotHistogram("Histogram", arr, IM_ARRAYSIZE(arr), 0, NULL, 0.0f, 1.0f, ImVec2(0, 80));
+
+					// Use functions to generate output
+					// FIXME: This is rather awkward because current plot API only pass in indices. We probably want an API passing floats and user provide sample rate/count.
+					struct Funcs
+					{
+						static float Sin(void*, int i) { return sinf(i * 0.1f); }
+						static float Saw(void*, int i) { return (i & 1) ? 1.0f : -1.0f; }
+					};
+					static int func_type = 0, display_count = 70;
+					ImGui::Separator();
+					ImGui::PushItemWidth(100); ImGui::Combo("func", &func_type, "Sin\0Saw\0"); ImGui::PopItemWidth();
+					ImGui::SameLine();
+					ImGui::SliderInt("Sample count", &display_count, 1, 400);
+					float(*func)(void*, int) = (func_type == 0) ? Funcs::Sin : Funcs::Saw;
+					ImGui::PlotLines("Lines", func, NULL, display_count, 0, NULL, -1.0f, 1.0f, ImVec2(0, 80));
+					ImGui::PlotHistogram("Histogram", func, NULL, display_count, 0, NULL, -1.0f, 1.0f, ImVec2(0, 80));
+					ImGui::Separator();
+
+					// Animate a simple progress bar
+					static float progress = 0.0f, progress_dir = 1.0f;
+					if (animate)
+					{
+						progress += progress_dir * 0.4f * ImGui::GetIO().DeltaTime;
+						if (progress >= +1.1f) { progress = +1.1f; progress_dir *= -1.0f; }
+						if (progress <= -0.1f) { progress = -0.1f; progress_dir *= -1.0f; }
+					}
+
+					// Typically we would use ImVec2(-1.0f,0.0f) to use all available width, or ImVec2(width,0.0f) for a specified width. ImVec2(0.0f,0.0f) uses ItemWidth.
+					ImGui::ProgressBar(progress, ImVec2(0.0f, 0.0f));
+					ImGui::SameLine(0.0f, ImGui::GetStyle().ItemInnerSpacing.x);
+					ImGui::Text("Progress Bar");
+
+					float progress_saturated = (progress < 0.0f) ? 0.0f : (progress > 1.0f) ? 1.0f : progress;
+					char buf[32];
+					sprintf(buf, "%d/%d", (int)(progress_saturated * 1753), 1753);
+					ImGui::ProgressBar(progress, ImVec2(0.f, 0.f), buf);
+					ImGui::TreePop();
+				}
+				if (ImGui::TreeNode("Color/Picker Widgets"))
+				{
+					static ImVec4 color = ImColor(114, 144, 154, 200);
+
+					static bool hdr = false;
+					static bool alpha_preview = true;
+					static bool alpha_half_preview = false;
+					static bool options_menu = true;
+					ImGui::Checkbox("With HDR", &hdr); ImGui::SameLine(); ShowHelpMarker("Currently all this does is to lift the 0..1 limits on dragging widgets.");
+					ImGui::Checkbox("With Alpha Preview", &alpha_preview);
+					ImGui::Checkbox("With Half Alpha Preview", &alpha_half_preview);
+					ImGui::Checkbox("With Options Menu", &options_menu); ImGui::SameLine(); ShowHelpMarker("Right-click on the individual color widget to show options.");
+					int misc_flags = (hdr ? ImGuiColorEditFlags_HDR : 0) | (alpha_half_preview ? ImGuiColorEditFlags_AlphaPreviewHalf : (alpha_preview ? ImGuiColorEditFlags_AlphaPreview : 0)) | (options_menu ? 0 : ImGuiColorEditFlags_NoOptions);
+
+					ImGui::Text("Color widget:");
+					ImGui::SameLine(); ShowHelpMarker("Click on the colored square to open a color picker.\nCTRL+click on individual component to input value.\n");
+					ImGui::ColorEdit3("MyColor##1", (float*)&color, misc_flags);
+
+					ImGui::Text("Color widget HSV with Alpha:");
+					ImGui::ColorEdit4("MyColor##2", (float*)&color, ImGuiColorEditFlags_HSV | misc_flags);
+
+					ImGui::Text("Color widget with Float Display:");
+					ImGui::ColorEdit4("MyColor##2f", (float*)&color, ImGuiColorEditFlags_Float | misc_flags);
+
+					ImGui::Text("Color button with Picker:");
+					ImGui::SameLine(); ShowHelpMarker("With the ImGuiColorEditFlags_NoInputs flag you can hide all the slider/text inputs.\nWith the ImGuiColorEditFlags_NoLabel flag you can pass a non-empty label which will only be used for the tooltip and picker popup.");
+					ImGui::ColorEdit4("MyColor##3", (float*)&color, ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_NoLabel | misc_flags);
+
+					ImGui::Text("Color button with Custom Picker Popup:");
+					static bool saved_palette_inited = false;
+					static ImVec4 saved_palette[32];
+					static ImVec4 backup_color;
+					if (!saved_palette_inited)
+						for (int n = 0; n < IM_ARRAYSIZE(saved_palette); n++)
+							ImGui::ColorConvertHSVtoRGB(n / 31.0f, 0.8f, 0.8f, saved_palette[n].x, saved_palette[n].y, saved_palette[n].z);
+					bool open_popup = ImGui::ColorButton("MyColor##3b", color, misc_flags);
+					ImGui::SameLine();
+					open_popup |= ImGui::Button("Palette");
+					if (open_popup)
+					{
+						ImGui::OpenPopup("mypicker");
+						backup_color = color;
+					}
+					if (ImGui::BeginPopup("mypicker"))
+					{
+						// FIXME: Adding a drag and drop example here would be perfect!
+						ImGui::Text("MY CUSTOM COLOR PICKER WITH AN AMAZING PALETTE!");
+						ImGui::Separator();
+						ImGui::ColorPicker4("##picker", (float*)&color, misc_flags | ImGuiColorEditFlags_NoSidePreview | ImGuiColorEditFlags_NoSmallPreview);
+						ImGui::SameLine();
+						ImGui::BeginGroup();
+						ImGui::Text("Current");
+						ImGui::ColorButton("##current", color, ImGuiColorEditFlags_NoPicker | ImGuiColorEditFlags_AlphaPreviewHalf, ImVec2(60, 40));
+						ImGui::Text("Previous");
+						if (ImGui::ColorButton("##previous", backup_color, ImGuiColorEditFlags_NoPicker | ImGuiColorEditFlags_AlphaPreviewHalf, ImVec2(60, 40)))
+							color = backup_color;
+						ImGui::Separator();
+						ImGui::Text("Palette");
+						for (int n = 0; n < IM_ARRAYSIZE(saved_palette); n++)
+						{
+							ImGui::PushID(n);
+							if ((n % 8) != 0)
+								ImGui::SameLine(0.0f, ImGui::GetStyle().ItemSpacing.y);
+							if (ImGui::ColorButton("##palette", saved_palette[n], ImGuiColorEditFlags_NoPicker | ImGuiColorEditFlags_NoTooltip, ImVec2(20, 20)))
+								color = ImVec4(saved_palette[n].x, saved_palette[n].y, saved_palette[n].z, color.w); // Preserve alpha!
+							ImGui::PopID();
+						}
+						ImGui::EndGroup();
+						ImGui::EndPopup();
+					}
+
+					ImGui::Text("Color button only:");
+					ImGui::ColorButton("MyColor##3b", *(ImVec4*)&color, misc_flags, ImVec2(80, 80));
+
+					ImGui::Text("Color picker:");
+					static bool alpha = true;
+					static bool alpha_bar = true;
+					static bool side_preview = true;
+					static bool ref_color = false;
+					static ImVec4 ref_color_v(1.0f, 0.0f, 1.0f, 0.5f);
+					static int inputs_mode = 2;
+					static int picker_mode = 0;
+					ImGui::Checkbox("With Alpha", &alpha);
+					ImGui::Checkbox("With Alpha Bar", &alpha_bar);
+					ImGui::Checkbox("With Side Preview", &side_preview);
+					if (side_preview)
+					{
+						ImGui::SameLine();
+						ImGui::Checkbox("With Ref Color", &ref_color);
+						if (ref_color)
+						{
+							ImGui::SameLine();
+							ImGui::ColorEdit4("##RefColor", &ref_color_v.x, ImGuiColorEditFlags_NoInputs | misc_flags);
+						}
+					}
+					ImGui::Combo("Inputs Mode", &inputs_mode, "All Inputs\0No Inputs\0RGB Input\0HSV Input\0HEX Input\0");
+					ImGui::Combo("Picker Mode", &picker_mode, "Auto/Current\0Hue bar + SV rect\0Hue wheel + SV triangle\0");
+					ImGui::SameLine(); ShowHelpMarker("User can right-click the picker to change mode.");
+					ImGuiColorEditFlags flags = misc_flags;
+					if (!alpha) flags |= ImGuiColorEditFlags_NoAlpha; // This is by default if you call ColorPicker3() instead of ColorPicker4()
+					if (alpha_bar) flags |= ImGuiColorEditFlags_AlphaBar;
+					if (!side_preview) flags |= ImGuiColorEditFlags_NoSidePreview;
+					if (picker_mode == 1) flags |= ImGuiColorEditFlags_PickerHueBar;
+					if (picker_mode == 2) flags |= ImGuiColorEditFlags_PickerHueWheel;
+					if (inputs_mode == 1) flags |= ImGuiColorEditFlags_NoInputs;
+					if (inputs_mode == 2) flags |= ImGuiColorEditFlags_RGB;
+					if (inputs_mode == 3) flags |= ImGuiColorEditFlags_HSV;
+					if (inputs_mode == 4) flags |= ImGuiColorEditFlags_HEX;
+					ImGui::ColorPicker4("MyColor##4", (float*)&color, flags, ref_color ? &ref_color_v.x : NULL);
+
+					ImGui::Text("Programmatically set defaults/options:");
+					ImGui::SameLine(); ShowHelpMarker("SetColorEditOptions() is designed to allow you to set boot-time default.\nWe don't have Push/Pop functions because you can force options on a per-widget basis if needed, and the user can change non-forced ones with the options menu.\nWe don't have a getter to avoid encouraging you to persistently save values that aren't forward-compatible.");
+					if (ImGui::Button("Uint8 + HSV"))
+						ImGui::SetColorEditOptions(ImGuiColorEditFlags_Uint8 | ImGuiColorEditFlags_HSV);
+					ImGui::SameLine();
+					if (ImGui::Button("Float + HDR"))
+						ImGui::SetColorEditOptions(ImGuiColorEditFlags_Float | ImGuiColorEditFlags_RGB);
+
+					ImGui::TreePop();
+				}
+
+				ImGui::End();
+			}
+
+			///////////////////////////////////////////////////////////////////////
+
+			//test window
+			if (show_test_window)
+			{
+				ImGui::SetNextWindowPos(ImVec2(650, 20), ImGuiCond_FirstUseEver);
+				ImGui::ShowTestWindow(&show_test_window);
+			}
+
+		}
+
 
 		// Rendering
 		int display_w, display_h;
