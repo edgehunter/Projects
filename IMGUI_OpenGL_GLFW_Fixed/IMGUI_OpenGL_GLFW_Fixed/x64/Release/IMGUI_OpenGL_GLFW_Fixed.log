@@ -22,7 +22,7 @@ c:\program files\nvidia gpu computing toolkit\cuda\v8.0\include\device_double_fu
 c:\program files\nvidia gpu computing toolkit\cuda\v8.0\include\sm_20_intrinsics.h : warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
 c:\program files\nvidia gpu computing toolkit\cuda\v8.0\include\sm_20_intrinsics.h(943): warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\tchar.h(643): warning : expression has no effect
-D:/Projects_lixiaoguang/Projects/IMGUI_OpenGL_GLFW_Fixed/IMGUI_OpenGL_GLFW_Fixed/IMGUI_OpenGL_GLFW_Fixed.cu(413): warning : variable "show_another_window" was declared but never referenced
+D:/Projects_lixiaoguang/Projects/IMGUI_OpenGL_GLFW_Fixed/IMGUI_OpenGL_GLFW_Fixed/IMGUI_OpenGL_GLFW_Fixed.cu(427): warning : variable "show_another_window" was declared but never referenced
 c:\program files\nvidia gpu computing toolkit\cuda\v8.0\include\math_functions.h : warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
 c:\program files\nvidia gpu computing toolkit\cuda\v8.0\include\math_functions.h(849): warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
 c:\program files\nvidia gpu computing toolkit\cuda\v8.0\include\math_functions.h(1787): warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
@@ -40,7 +40,7 @@ c:\program files\nvidia gpu computing toolkit\cuda\v8.0\include\device_double_fu
 c:\program files\nvidia gpu computing toolkit\cuda\v8.0\include\sm_20_intrinsics.h : warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
 c:\program files\nvidia gpu computing toolkit\cuda\v8.0\include\sm_20_intrinsics.h(943): warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\tchar.h(643): warning : expression has no effect
-D:/Projects_lixiaoguang/Projects/IMGUI_OpenGL_GLFW_Fixed/IMGUI_OpenGL_GLFW_Fixed/IMGUI_OpenGL_GLFW_Fixed.cu(413): warning : variable "show_another_window" was declared but never referenced
+D:/Projects_lixiaoguang/Projects/IMGUI_OpenGL_GLFW_Fixed/IMGUI_OpenGL_GLFW_Fixed/IMGUI_OpenGL_GLFW_Fixed.cu(427): warning : variable "show_another_window" was declared but never referenced
 c:\program files\nvidia gpu computing toolkit\cuda\v8.0\include\math_functions.h : warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
 c:\program files\nvidia gpu computing toolkit\cuda\v8.0\include\math_functions.h(849): warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
 c:\program files\nvidia gpu computing toolkit\cuda\v8.0\include\math_functions.h(1787): warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
@@ -108,8 +108,8 @@ c:\program files\nvidia gpu computing toolkit\cuda\v8.0\include\math_functions.h
 c:\program files\nvidia gpu computing toolkit\cuda\v8.0\include\math_functions.h(7956): warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
 CUDACOMPILE : nvcc warning : The 'compute_20', 'sm_20', and 'sm_21' architectures are deprecated, and may be removed in a future release (Use -Wno-deprecated-gpu-targets to suppress warning).
   IMGUI_OpenGL_GLFW_Fixed.cu
-D:/Projects_lixiaoguang/Projects/IMGUI_OpenGL_GLFW_Fixed/IMGUI_OpenGL_GLFW_Fixed/IMGUI_OpenGL_GLFW_Fixed.cu(512): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-D:/Projects_lixiaoguang/Projects/IMGUI_OpenGL_GLFW_Fixed/IMGUI_OpenGL_GLFW_Fixed/IMGUI_OpenGL_GLFW_Fixed.cu(530): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:/Projects_lixiaoguang/Projects/IMGUI_OpenGL_GLFW_Fixed/IMGUI_OpenGL_GLFW_Fixed/IMGUI_OpenGL_GLFW_Fixed.cu(526): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:/Projects_lixiaoguang/Projects/IMGUI_OpenGL_GLFW_Fixed/IMGUI_OpenGL_GLFW_Fixed/IMGUI_OpenGL_GLFW_Fixed.cu(544): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
   Device_Status.cpp
 Device_Status\Device_Status.cpp(32): warning C4293: '<<': shift count negative or too big, undefined behavior
 Device_Status\Device_Status.cpp(33): warning C4293: '<<': shift count negative or too big, undefined behavior

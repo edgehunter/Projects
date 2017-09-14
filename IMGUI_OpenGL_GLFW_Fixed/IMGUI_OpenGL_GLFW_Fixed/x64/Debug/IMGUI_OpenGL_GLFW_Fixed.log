@@ -1,8 +1,4 @@
-﻿  
-  D:\Projects_lixiaoguang\Projects\IMGUI_OpenGL_GLFW_Fixed\IMGUI_OpenGL_GLFW_Fixed>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0\bin\nvcc.exe" -ccbin "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64"  -IIMGUI -IIMGUI\examples\libs\glfw\include -I"C:\ProgramData\NVIDIA Corporation\CUDA Samples\v8.0\common\inc" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0\include"  -G   --keep-dir x64\Debug -maxrregcount=0  --machine 64 --compile   -g   -D_DEBUG -D_CONSOLE -D_UNICODE -DUNICODE -Xcompiler "/EHsc /W3 /nologo /Od /FS /Zi /RTC1 /MDd " -o x64\Debug\IMGUI_OpenGL_GLFW_Fixed.cu.obj "D:\Projects_lixiaoguang\Projects\IMGUI_OpenGL_GLFW_Fixed\IMGUI_OpenGL_GLFW_Fixed\IMGUI_OpenGL_GLFW_Fixed.cu" -clean 
-CUDACOMPILE : nvcc warning : The 'compute_20', 'sm_20', and 'sm_21' architectures are deprecated, and may be removed in a future release (Use -Wno-deprecated-gpu-targets to suppress warning).
-  IMGUI_OpenGL_GLFW_Fixed.cu
-  Compiling CUDA source file IMGUI_OpenGL_GLFW_Fixed.cu...
+﻿  Compiling CUDA source file IMGUI_OpenGL_GLFW_Fixed.cu...
   
   D:\Projects_lixiaoguang\Projects\IMGUI_OpenGL_GLFW_Fixed\IMGUI_OpenGL_GLFW_Fixed>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0\bin\nvcc.exe" -gencode=arch=compute_20,code=\"sm_20,compute_20\" --use-local-env --cl-version 2015 -ccbin "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64"  -IIMGUI -IIMGUI\examples\libs\glfw\include -I"C:\ProgramData\NVIDIA Corporation\CUDA Samples\v8.0\common\inc" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0\include"  -G   --keep-dir x64\Debug -maxrregcount=0  --machine 64 --compile -cudart static  -g   -D_DEBUG -D_CONSOLE -D_UNICODE -DUNICODE -Xcompiler "/EHsc /W3 /nologo /Od /FS /Zi /RTC1 /MDd " -o x64\Debug\IMGUI_OpenGL_GLFW_Fixed.cu.obj "D:\Projects_lixiaoguang\Projects\IMGUI_OpenGL_GLFW_Fixed\IMGUI_OpenGL_GLFW_Fixed\IMGUI_OpenGL_GLFW_Fixed.cu" 
 c:\program files\nvidia gpu computing toolkit\cuda\v8.0\include\math_functions.h : warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
@@ -22,7 +18,7 @@ c:\program files\nvidia gpu computing toolkit\cuda\v8.0\include\device_double_fu
 c:\program files\nvidia gpu computing toolkit\cuda\v8.0\include\sm_20_intrinsics.h : warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
 c:\program files\nvidia gpu computing toolkit\cuda\v8.0\include\sm_20_intrinsics.h(943): warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\tchar.h(643): warning : expression has no effect
-D:/Projects_lixiaoguang/Projects/IMGUI_OpenGL_GLFW_Fixed/IMGUI_OpenGL_GLFW_Fixed/IMGUI_OpenGL_GLFW_Fixed.cu(405): warning : variable "f" was declared but never referenced
+D:/Projects_lixiaoguang/Projects/IMGUI_OpenGL_GLFW_Fixed/IMGUI_OpenGL_GLFW_Fixed/IMGUI_OpenGL_GLFW_Fixed.cu(327): warning : function "ShowHelpMarker" was declared but never referenced
 c:\program files\nvidia gpu computing toolkit\cuda\v8.0\include\math_functions.h : warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
 c:\program files\nvidia gpu computing toolkit\cuda\v8.0\include\math_functions.h(849): warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
 c:\program files\nvidia gpu computing toolkit\cuda\v8.0\include\math_functions.h(1787): warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
@@ -40,7 +36,7 @@ c:\program files\nvidia gpu computing toolkit\cuda\v8.0\include\device_double_fu
 c:\program files\nvidia gpu computing toolkit\cuda\v8.0\include\sm_20_intrinsics.h : warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
 c:\program files\nvidia gpu computing toolkit\cuda\v8.0\include\sm_20_intrinsics.h(943): warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\tchar.h(643): warning : expression has no effect
-D:/Projects_lixiaoguang/Projects/IMGUI_OpenGL_GLFW_Fixed/IMGUI_OpenGL_GLFW_Fixed/IMGUI_OpenGL_GLFW_Fixed.cu(405): warning : variable "f" was declared but never referenced
+D:/Projects_lixiaoguang/Projects/IMGUI_OpenGL_GLFW_Fixed/IMGUI_OpenGL_GLFW_Fixed/IMGUI_OpenGL_GLFW_Fixed.cu(327): warning : function "ShowHelpMarker" was declared but never referenced
 c:\program files\nvidia gpu computing toolkit\cuda\v8.0\include\math_functions.h : warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
 c:\program files\nvidia gpu computing toolkit\cuda\v8.0\include\math_functions.h(849): warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
 c:\program files\nvidia gpu computing toolkit\cuda\v8.0\include\math_functions.h(1787): warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
@@ -108,26 +104,7 @@ c:\program files\nvidia gpu computing toolkit\cuda\v8.0\include\math_functions.h
 c:\program files\nvidia gpu computing toolkit\cuda\v8.0\include\math_functions.h(7956): warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
 CUDACOMPILE : nvcc warning : The 'compute_20', 'sm_20', and 'sm_21' architectures are deprecated, and may be removed in a future release (Use -Wno-deprecated-gpu-targets to suppress warning).
   IMGUI_OpenGL_GLFW_Fixed.cu
-  stdafx.cpp
-  imgui_impl_glfw.cpp
-  imgui_draw.cpp
-  imgui_demo.cpp
-  imgui.cpp
-  Device_Status.cpp
-d:\projects_lixiaoguang\projects\imgui_opengl_glfw_fixed\imgui_opengl_glfw_fixed\device_status\device_status.cpp(26): warning C4293: '<<': shift count negative or too big, undefined behavior
-d:\projects_lixiaoguang\projects\imgui_opengl_glfw_fixed\imgui_opengl_glfw_fixed\device_status\device_status.cpp(27): warning C4293: '<<': shift count negative or too big, undefined behavior
-d:\projects_lixiaoguang\projects\imgui_opengl_glfw_fixed\imgui_opengl_glfw_fixed\device_status\device_status.cpp(35): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
-d:\projects_lixiaoguang\projects\imgui_opengl_glfw_fixed\imgui_opengl_glfw_fixed\device_status\device_status.cpp(36): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
-d:\projects_lixiaoguang\projects\imgui_opengl_glfw_fixed\imgui_opengl_glfw_fixed\device_status\device_status.cpp(37): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
-d:\projects_lixiaoguang\projects\imgui_opengl_glfw_fixed\imgui_opengl_glfw_fixed\device_status\device_status.cpp(82): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
-d:\projects_lixiaoguang\projects\imgui_opengl_glfw_fixed\imgui_opengl_glfw_fixed\device_status\device_status.cpp(124): warning C4244: '=': conversion from 'unsigned __int64' to 'unsigned int', possible loss of data
-d:\projects_lixiaoguang\projects\imgui_opengl_glfw_fixed\imgui_opengl_glfw_fixed\device_status\device_status.cpp(125): warning C4244: '=': conversion from 'unsigned __int64' to 'unsigned int', possible loss of data
-d:\projects_lixiaoguang\projects\imgui_opengl_glfw_fixed\imgui_opengl_glfw_fixed\device_status\device_status.cpp(126): warning C4244: '=': conversion from 'unsigned __int64' to 'unsigned int', possible loss of data
-  Generating Code...
-glfw3.lib(init.obj) : warning LNK4217: locally defined symbol vsnprintf imported in function _glfwInputError
-MSVCRTD.lib(vsnprintf.obj) : warning LNK4049: locally defined symbol vsnprintf imported
-glfw3.lib(context.obj) : warning LNK4217: locally defined symbol sscanf imported in function parseVersionString
-MSVCRTD.lib(vsnprintf.obj) : warning LNK4049: locally defined symbol _vsnprintf imported
+D:/Projects_lixiaoguang/Projects/IMGUI_OpenGL_GLFW_Fixed/IMGUI_OpenGL_GLFW_Fixed/IMGUI_OpenGL_GLFW_Fixed.cu(493): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:/Projects_lixiaoguang/Projects/IMGUI_OpenGL_GLFW_Fixed/IMGUI_OpenGL_GLFW_Fixed/IMGUI_OpenGL_GLFW_Fixed.cu(511): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
   IMGUI_OpenGL_GLFW_Fixed.vcxproj -> D:\Projects_lixiaoguang\Projects\IMGUI_OpenGL_GLFW_Fixed\x64\Debug\IMGUI_OpenGL_GLFW_Fixed.exe
   IMGUI_OpenGL_GLFW_Fixed.vcxproj -> D:\Projects_lixiaoguang\Projects\IMGUI_OpenGL_GLFW_Fixed\x64\Debug\IMGUI_OpenGL_GLFW_Fixed.pdb (Full PDB)
