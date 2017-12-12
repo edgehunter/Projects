@@ -17,7 +17,7 @@ int __cdecl main(int argc, char **argv)
 	//---------------------------------------------
 	// Declare and initialize variables
 	WSADATA wsaData;
-	WSABUF DataBuf;
+	WSABUF DataBuf[2];
 
 	WSAOVERLAPPED Overlapped;
 	SOCKET SendToSocket = INVALID_SOCKET;
@@ -34,7 +34,9 @@ int __cdecl main(int argc, char **argv)
 	char *targetip;
 	char *targetport;
 
-	char SendBuf[512] = "Data buffer to send";
+	char SendBuf_00[512] = "Data buffer to send 00";
+	char SendBuf_01[512] = "Data buffer to send 01";
+
 	int BufLen = 512;
 	DWORD BytesSent = 0;
 	DWORD Flags = 0;
@@ -52,8 +54,8 @@ int __cdecl main(int argc, char **argv)
 	}
 	*/
 
-	targetip = "192.168.1.211";// argv[1];
-	targetport = "27777";// argv[2];
+	targetip = "192.168.43.94";// argv[1];
+	targetport = "27015";// argv[2];
 
 	//---------------------------------------------
 	// Initialize Winsock
@@ -136,9 +138,13 @@ int __cdecl main(int argc, char **argv)
 		inet_ntoa(RecvAddr.sin_addr), ntohs(RecvAddr.sin_port));
 
 	//    printf("Sending a datagram...\n");
-	DataBuf.len = BufLen;
-	DataBuf.buf = SendBuf;
-	rc = WSASendTo(SendToSocket, &DataBuf, 1,
+	DataBuf[0].len = BufLen;
+	DataBuf[0].buf = SendBuf_00;
+
+	DataBuf[1].len = BufLen;
+	DataBuf[1].buf = SendBuf_01;
+
+	rc = WSASendTo(SendToSocket, DataBuf, 2,
 		&BytesSent, Flags, (SOCKADDR *)& RecvAddr,
 		RecvAddrSize, &Overlapped, NULL);
 

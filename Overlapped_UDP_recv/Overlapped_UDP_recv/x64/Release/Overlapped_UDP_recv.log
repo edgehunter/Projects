@@ -1,9 +1,9 @@
-﻿Build started 2017/12/12 14:49:56.
+﻿Build started 2017/12/12 18:00:04.
      1>Project "D:\lixiaoguang\Projects\Overlapped_UDP_recv\Overlapped_UDP_recv\Overlapped_UDP_recv.vcxproj" on node 2 (Rebuild target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Release\\" /Fd"x64\Release\vc120.pdb" /Gd /TP /errorReport:prompt Overlapped_UDP_recv.cpp stdafx.cpp
          Overlapped_UDP_recv.cpp
-     1>Overlapped_UDP_recv.cpp(146): warning C4996: 'inet_ntoa': Use inet_ntop() or InetNtop() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+     1>Overlapped_UDP_recv.cpp(151): warning C4996: 'inet_ntoa': Use inet_ntop() or InetNtop() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
                  C:\Program Files (x86)\Windows Kits\8.1\Include\um\winsock2.h(1868) : see declaration of 'inet_ntoa'
          stdafx.cpp
        Link:
@@ -16,4 +16,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.83
+Time Elapsed 00:00:00.75

@@ -18,7 +18,7 @@ int __cdecl main()
 {
 
 	WSADATA wsaData;
-	WSABUF DataBuf;
+	WSABUF DataBuf[2];
 	WSAOVERLAPPED Overlapped;
 
 	SOCKET RecvSocket = INVALID_SOCKET;
@@ -28,7 +28,9 @@ int __cdecl main()
 	int SenderAddrSize = sizeof(SenderAddr);
 	u_short Port = 27015;
 
-	char RecvBuf[1024];
+	char RecvBuf_00[512];
+	char RecvBuf_01[512];
+
 	int BufLen = 1024;
 	DWORD BytesRecv = 0;
 	DWORD Flags = 0;
@@ -91,15 +93,18 @@ int __cdecl main()
 	//-----------------------------------------------
 	// Call the recvfrom function to receive datagrams
 	// on the bound socket.
-	DataBuf.len = BufLen;
-	DataBuf.buf = RecvBuf;
+	DataBuf[0].len = BufLen;
+	DataBuf[0].buf = RecvBuf_00;
+
+	DataBuf[1].len = BufLen;
+	DataBuf[1].buf = RecvBuf_01;
 
 	while (true)
 	{
 		wprintf(L"Listening for incoming datagrams on port=%d\n", Port);
 		rc = WSARecvFrom(RecvSocket,
-			&DataBuf,
-			1,
+			DataBuf,
+			2,
 			&BytesRecv,
 			&Flags,
 			(SOCKADDR *)& SenderAddr,
@@ -145,6 +150,9 @@ int __cdecl main()
 					//SenderAddr.sin_addr.S_un.S_addr;
 					printf("SenderAddr.S_addr: %s\n", inet_ntoa(SenderAddr.sin_addr));
 					printf("SenderAddr.sin_port: %d\n", ntohs(SenderAddr.sin_port));
+
+					printf("Context: %s\n", RecvBuf_00);
+					printf("Context: %s\n", RecvBuf_01);
 				}
 
 				//}

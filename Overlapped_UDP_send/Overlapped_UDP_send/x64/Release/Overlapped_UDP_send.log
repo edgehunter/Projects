@@ -1,19 +1,19 @@
-﻿Build started 2017/12/12 15:00:52.
+﻿Build started 2017/12/12 17:52:10.
      1>Project "D:\lixiaoguang\Projects\Overlapped_UDP_send\Overlapped_UDP_send\Overlapped_UDP_send.vcxproj" on node 2 (Rebuild target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Release\\" /Fd"x64\Release\vc120.pdb" /Gd /TP /errorReport:prompt Overlapped_UDP_send.cpp stdafx.cpp
          Overlapped_UDP_send.cpp
-     1>Overlapped_UDP_send.cpp(94): warning C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+     1>Overlapped_UDP_send.cpp(96): warning C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
                  C:\Program Files (x86)\Windows Kits\8.1\Include\um\winsock2.h(1850) : see declaration of 'inet_addr'
-     1>Overlapped_UDP_send.cpp(112): warning C4996: 'gethostbyname': Use getaddrinfo() or GetAddrInfoW() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+     1>Overlapped_UDP_send.cpp(114): warning C4996: 'gethostbyname': Use getaddrinfo() or GetAddrInfoW() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
                  C:\Program Files (x86)\Windows Kits\8.1\Include\um\winsock2.h(2238) : see declaration of 'gethostbyname'
-     1>Overlapped_UDP_send.cpp(113): warning C4996: 'inet_ntoa': Use inet_ntop() or InetNtop() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+     1>Overlapped_UDP_send.cpp(115): warning C4996: 'inet_ntoa': Use inet_ntop() or InetNtop() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
                  C:\Program Files (x86)\Windows Kits\8.1\Include\um\winsock2.h(1868) : see declaration of 'inet_ntoa'
-     1>Overlapped_UDP_send.cpp(116): warning C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+     1>Overlapped_UDP_send.cpp(118): warning C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
                  C:\Program Files (x86)\Windows Kits\8.1\Include\um\winsock2.h(1850) : see declaration of 'inet_addr'
-     1>Overlapped_UDP_send.cpp(134): warning C4996: 'inet_ntoa': Use inet_ntop() or InetNtop() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
-                 C:\Program Files (x86)\Windows Kits\8.1\Include\um\winsock2.h(1868) : see declaration of 'inet_ntoa'
      1>Overlapped_UDP_send.cpp(136): warning C4996: 'inet_ntoa': Use inet_ntop() or InetNtop() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+                 C:\Program Files (x86)\Windows Kits\8.1\Include\um\winsock2.h(1868) : see declaration of 'inet_ntoa'
+     1>Overlapped_UDP_send.cpp(138): warning C4996: 'inet_ntoa': Use inet_ntop() or InetNtop() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
                  C:\Program Files (x86)\Windows Kits\8.1\Include\um\winsock2.h(1868) : see declaration of 'inet_ntoa'
          stdafx.cpp
        Link:
@@ -26,4 +26,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.78
+Time Elapsed 00:00:00.79
