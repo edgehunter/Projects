@@ -19,7 +19,7 @@ int  main()
 	// Declare and initialize variables
 	WSADATA wsaData;
 	WSABUF DataBuf_Send;
-	WSABUF DataBuf_Recv[2];
+	WSABUF DataBuf_Recv[1];
 
 	WSAOVERLAPPED Overlapped_Send;
 	WSAOVERLAPPED Overlapped_Recv;
@@ -63,9 +63,8 @@ int  main()
 	DWORD BytesSend = 0;
 	DWORD Flags_Send = 0;
 
-	char RecvBuf[2468];
-	char RecvBuf_another[2468];
-	int RecvBufLen = 2468;
+	char RecvBuf[4096];
+	int RecvBufLen = 4096;
 	DWORD BytesRecv = 0;
 	DWORD Flags_Recv = 0;
 
@@ -221,9 +220,6 @@ int  main()
 	DataBuf_Recv[0].len = RecvBufLen;
 	DataBuf_Recv[0].buf = RecvBuf;
 
-	DataBuf_Recv[1].len = RecvBufLen;
-	DataBuf_Recv[1].buf = RecvBuf_another;
-
 	wprintf(L"Listening for incoming datagrams on port=%d\n", Host_Port);
 
 	while (true)
@@ -291,7 +287,7 @@ int  main()
 		//wprintf(L"Listening for incoming datagrams on port=%d, Recv_Count=%d\n", Host_Port, ++Recv_Count);
 		rc = WSARecvFrom(Socket,
 			DataBuf_Recv,
-			2,
+			1,
 			&BytesRecv,
 			&Flags_Recv,
 			(SOCKADDR *)& RecvAddr,
@@ -314,12 +310,12 @@ int  main()
 
 				WSAWaitForMultipleEvents(1, &Overlapped_Recv.hEvent, TRUE, INFINITE, TRUE);
 				WSAResetEvent(Overlapped_Recv.hEvent);
-				WSAGetOverlappedResult(Socket, &Overlapped_Recv, &BytesRecv,
-					FALSE, &Flags_Recv);
+				//WSAGetOverlappedResult(Socket, &Overlapped_Recv, &BytesRecv,FALSE, &Flags_Recv);
 
-				//if (Recv_Count > 1000)
+				if (Recv_Count > 1500)
 				{
-					wprintf(L"Number of received bytes = %d\n", BytesRecv);
+					//wprintf(L"Number of received bytes = %d\n", BytesRecv);
+					printf("Recv_Count: %d\n", ++Recv_Count);
 				}
 
 				//wprintf(L"Number of received bytes = %d\n", BytesRecv);
