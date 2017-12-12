@@ -27,15 +27,15 @@ int __cdecl main(int argc, char **argv)
 	int RecvAddrSize = sizeof(RecvAddr);
 	int LocalAddrSize = sizeof(LocalAddr);
 
-	u_short Port = 27777;
+	u_short Port = 27779;
 	struct hostent *localHost;
 	char *ip;
 
 	char *targetip;
 	char *targetport;
 
-	char SendBuf[1024] = "Data buffer to send";
-	int BufLen = 1024;
+	char SendBuf[512] = "Data buffer to send";
+	int BufLen = 512;
 	DWORD BytesSent = 0;
 	DWORD Flags = 0;
 
@@ -52,8 +52,8 @@ int __cdecl main(int argc, char **argv)
 	}
 	*/
 
-	targetip = "192.168.1.211"; argv[1];
-	targetport = "27015"; argv[2];
+	targetip = "192.168.1.211";// argv[1];
+	targetport = "27777";// argv[2];
 
 	//---------------------------------------------
 	// Initialize Winsock

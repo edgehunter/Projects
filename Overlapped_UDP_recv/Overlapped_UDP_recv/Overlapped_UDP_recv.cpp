@@ -85,49 +85,80 @@ int __cdecl main()
 		return 1;
 	}
 
+	//循环接收数据
+	//////////////////////////////////////////////////////////////////////////
+
 	//-----------------------------------------------
 	// Call the recvfrom function to receive datagrams
 	// on the bound socket.
 	DataBuf.len = BufLen;
 	DataBuf.buf = RecvBuf;
-	wprintf(L"Listening for incoming datagrams on port=%d\n", Port);
-	rc = WSARecvFrom(RecvSocket,
-		&DataBuf,
-		1,
-		&BytesRecv,
-		&Flags,
-		(SOCKADDR *)& SenderAddr,
-		&SenderAddrSize, &Overlapped, NULL);
 
-	if (rc != 0) {
-		err = WSAGetLastError();
-		if (err != WSA_IO_PENDING) {
-			wprintf(L"WSARecvFrom failed with error: %ld\n", err);
-			WSACloseEvent(Overlapped.hEvent);
-			closesocket(RecvSocket);
-			WSACleanup();
-			return 1;
-		}
-		else {
-			rc = WSAWaitForMultipleEvents(1, &Overlapped.hEvent, TRUE, INFINITE, TRUE);
-			if (rc == WSA_WAIT_FAILED) {
-				wprintf(L"WSAWaitForMultipleEvents failed with error: %d\n", WSAGetLastError());
-				retval = 1;
-			}
+	while (true)
+	{
+		wprintf(L"Listening for incoming datagrams on port=%d\n", Port);
+		rc = WSARecvFrom(RecvSocket,
+			&DataBuf,
+			1,
+			&BytesRecv,
+			&Flags,
+			(SOCKADDR *)& SenderAddr,
+			&SenderAddrSize, &Overlapped, NULL);
 
-			rc = WSAGetOverlappedResult(RecvSocket, &Overlapped, &BytesRecv,
-				FALSE, &Flags);
-			if (rc == FALSE) {
-				wprintf(L"WSArecvFrom failed with error: %d\n", WSAGetLastError());
-				retval = 1;
+
+		if (rc != 0)
+		{
+			err = WSAGetLastError();
+			if (err != WSA_IO_PENDING) 
+			{
+				wprintf(L"WSARecvFrom failed with error: %ld\n", err);
+				WSACloseEvent(Overlapped.hEvent);
+				closesocket(RecvSocket);
+				WSACleanup();
+				return 1;
 			}
 			else
-				wprintf(L"Number of received bytes = %d\n", BytesRecv);
+			{
+				//while (true)
+				//{
+				rc = WSAWaitForMultipleEvents(1, &Overlapped.hEvent, TRUE, INFINITE, TRUE);
+				if (rc == WSA_WAIT_FAILED) {
+					wprintf(L"WSAWaitForMultipleEvents failed with error: %d\n", WSAGetLastError());
+					retval = 1;
+				}
 
-			wprintf(L"Finished receiving. Closing socket.\n");
+				if (!WSAResetEvent(Overlapped.hEvent))
+				{
+					wprintf(L"\n WSAResetEvent failed with error: %d\n", WSAGetLastError());
+				}
+
+				rc = WSAGetOverlappedResult(RecvSocket, &Overlapped, &BytesRecv,
+					FALSE, &Flags);
+				if (rc == FALSE) {
+					wprintf(L"WSArecvFrom failed with error: %d\n", WSAGetLastError());
+					retval = 1;
+				}
+				else
+				{
+					wprintf(L"Number of received bytes = %d\n", BytesRecv);
+
+					//SenderAddr.sin_addr.S_un.S_addr;
+					printf("SenderAddr.S_addr: %s\n", inet_ntoa(SenderAddr.sin_addr));
+					printf("SenderAddr.sin_port: %d\n", ntohs(SenderAddr.sin_port));
+				}
+
+				//}
+
+			}
+
 		}
-
 	}
+
+	//Finished receiving. Closing socket
+	//////////////////////////////////////////////////////////////////////////
+
+	wprintf(L"Finished receiving. Closing socket.\n");
+
 	//---------------------------------------------
 	// When the application is finished receiving, close the socket.
 
