@@ -1,0 +1,16 @@
+﻿Build started 2017/12/12 11:37:24.
+     1>Project "D:\lixiaoguang\Projects\Overlapped_UDP_recv\Overlapped_UDP_recv\Overlapped_UDP_recv.vcxproj" on node 2 (Rebuild target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Overlapped_UDP_recv.cpp stdafx.cpp
+         stdafx.cpp
+         Overlapped_UDP_recv.cpp
+         Generating Code...
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\lixiaoguang\Projects\Overlapped_UDP_recv\Debug\Overlapped_UDP_recv.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\lixiaoguang\Projects\Overlapped_UDP_recv\Debug\Overlapped_UDP_recv.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\lixiaoguang\Projects\Overlapped_UDP_recv\Debug\Overlapped_UDP_recv.lib" /MACHINE:X86 Debug\Overlapped_UDP_recv.obj
+         Debug\stdafx.obj
+         Overlapped_UDP_recv.vcxproj -> D:\lixiaoguang\Projects\Overlapped_UDP_recv\Debug\Overlapped_UDP_recv.exe
+     1>Done Building Project "D:\lixiaoguang\Projects\Overlapped_UDP_recv\Overlapped_UDP_recv\Overlapped_UDP_recv.vcxproj" (Rebuild target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:01.29
